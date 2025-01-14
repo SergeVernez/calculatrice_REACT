@@ -22,12 +22,13 @@ h1 {
 	color: #eedf7a;
 	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 	text-align: right;
-	font-size: 35px;
+	font-size: 2.5rem;
 }
 .line {
 	margin: 20px;
 }
 button {
+	font-size: 1.5rem;
 	width: 90px;
 	height: 70px;
 	margin: 0 20px;
