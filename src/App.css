@@ -1,4 +1,4 @@
-/* color Hexa: noir: #343131, marron: #343131, marron clair: #A04747, orange: #D8A25E, Jaune: #EEDF7A  https://colorhunt.co/palette/343131a04747d8a25eeedf7a*/
+/* color Hexa: noir: #131313, marron: #343131, marron clair: #A04747, orange: #D8A25E, Jaune: #EEDF7A  https://colorhunt.co/palette/343131a04747d8a25eeedf7a*/
 
 body {
     margin: 0;
@@ -11,11 +11,11 @@ body {
 }
 
 h1 {
-    color: aliceblue;
+    color: #EEDF7A;
 }
 
 section {
     width: 80vw;
     height: 90vh;
-    background-color: antiquewhite;
+    background-color: #343131;
 }
