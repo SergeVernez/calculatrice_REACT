@@ -1,9 +1,21 @@
-body {
-	margin: 0;
-	padding: 0;
-	background-color: #131313;
-}
-h1 {
-	color: aliceblue;
+/* color Hexa: noir: #343131, marron: #343131, marron clair: #A04747, orange: #D8A25E, Jaune: #EEDF7A  https://colorhunt.co/palette/343131a04747d8a25eeedf7a*/
 
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #131313;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Assurez-vous que le body occupe toute la hauteur de la fenêtre */
+}
+
+h1 {
+    color: aliceblue;
+}
+
+section {
+    width: 80vw;
+    height: 90vh;
+    background-color: antiquewhite;
 }
