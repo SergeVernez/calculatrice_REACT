@@ -31,10 +31,24 @@ button {
 	border: none;
 	font-size: 1.5rem;
 	width: 90px;
-	height: 70px;
+	height: 60px;
 	margin: 0 20px;
 	border-radius: 40px;
 	box-shadow: 2px 2px 15px #00000033;
 	color: aliceblue;
 	background-color: grey;
+	cursor: pointer;
+	transition: tranform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+button:active {
+	transform: translateY(4px);
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+.yellow {
+	color: #f5e892;
+	background-color: #d8a15e83;
+}
+.yellowWhite {
+	color: aliceblue;
+	background-color: #dbc744;
 }
