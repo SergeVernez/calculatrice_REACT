@@ -86,8 +86,9 @@ hr {
 .cursor {
 	display: inline-block;
 	width: 2px;
-	height: 100px;
-	margin-bottom: -50px;
+	height: 1em;
+	margin-bottom: -0.2rem;
 	background-color: #d8a25e;
-	animation: blink 1s step-start infinite;
+	animation: blink 1.7s step-start infinite;
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }

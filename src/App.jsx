@@ -39,7 +39,7 @@ function App() {
             <button className='yellowButton'>AC</button>
             <button className='yellowButton'>&#9003;</button>
             <button className='yellowButton'>+/-</button>
-            <button className='yellowButton'>&divide;</button>
+            <button onClick={() => { handleClick("&divide;") }} className='yellowButton'>&divide;</button>
           </div>
 
           <div className='line'>
