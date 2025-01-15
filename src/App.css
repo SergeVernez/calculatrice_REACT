@@ -28,9 +28,10 @@ section {
 h1 {
 	color: aliceblue;
 	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-	font-weight: 600;
+	font-weight: 300;
 	text-align: right;
-	font-size: 2.5rem;
+	font-size: 4rem;
+	margin-bottom: -20px;
 }
 .line {
 	display: flex;
@@ -84,7 +85,9 @@ hr {
 
 .cursor {
 	display: inline-block;
-	width: 10px;
-	background-color: aliceblue;
+	width: 2px;
+	height: 100px;
+	margin-bottom: -50px;
+	background-color: #d8a25e;
 	animation: blink 1s step-start infinite;
 }

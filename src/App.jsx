@@ -8,16 +8,26 @@ function App() {
     setTotal(total.toString() + valeur.toString());
   }
 
+  // const handleCalcul = () => {
+  //   setTotal(eval(total))
+  // }
   const handleCalcul = () => {
-    setTotal(eval(total))
+    if (total) {
+      try {
+        setTotal(eval(total));
+      } catch (e) {
+        setTotal("Error");
+      }
+    }
   }
+
 
   return (
     <>
       <section>
         {/* afficher le resultat */}
         <div className='result'>
-          <h1>0 {total}</h1>
+          <h1>{total || <span className="cursor">&nbsp;</span>}</h1>
         </div>
         <div>
           <hr />
