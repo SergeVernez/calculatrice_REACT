@@ -70,3 +70,21 @@ hr {
 	background-color: rgba(128, 128, 128, 0.13);
 	margin: 20px 0;
 }
+@keyframes blink {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.cursor {
+	display: inline-block;
+	width: 10px;
+	background-color: aliceblue;
+	animation: blink 1s step-start infinite;
+}
