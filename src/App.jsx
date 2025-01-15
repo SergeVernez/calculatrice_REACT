@@ -28,6 +28,7 @@ function App() {
         {/* afficher le resultat */}
         <div className='result'>
           <h1>{total || <span className="cursor">&nbsp;</span>}</h1>
+          {/* &nbsp; est un caractère spécial d'espace insécable pour pouvoir afficher le cursor*/}
         </div>
         <div>
           <hr />
