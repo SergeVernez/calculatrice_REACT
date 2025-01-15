@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
@@ -19,7 +17,7 @@ function App() {
       <section>
         {/* afficher le resultat */}
         <div className='result'>
-          <h1>Result {total}</h1>
+          <h1>0 {total}</h1>
         </div>
         <div>
           <hr />
@@ -37,28 +35,28 @@ function App() {
           <div className='line'>
             <button onClick={() => { handleClick(7) }}>7</button>
             <button onClick={() => { handleClick(8) }}>8</button>
-            <button>9</button>
+            <button onClick={() => { handleClick(9) }}>9</button>
             <button className='yellowButton'>&times;</button>
           </div>
 
           <div className='line'>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
+            <button onClick={() => { handleClick(4) }}>4</button>
+            <button onClick={() => { handleClick(5) }}>5</button>
+            <button onClick={() => { handleClick(6) }}>6</button>
             <button className='yellowButton'>-</button>
           </div>
 
           <div className='line'>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
+            <button onClick={() => { handleClick(1) }}>1</button>
+            <button onClick={() => { handleClick(2) }}>2</button>
+            <button onClick={() => { handleClick(3) }}>3</button>
             <button onClick={() => { handleClick("+") }} className='yellowButton'>+</button>
           </div>
 
           <div className='line'>
-            <button>%</button>
-            <button>0</button>
-            <button>,</button>
+            <button onClick={() => { handleClick("%") }}>%</button>
+            <button onClick={() => { handleClick(0) }}>0</button>
+            <button onClick={() => { handleClick(",") }}>,</button>
             <button onClick={() => handleCalcul()} className='yellowWhiteButton'>=</button>
           </div>
         </div>
