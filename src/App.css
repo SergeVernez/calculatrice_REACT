@@ -10,9 +10,16 @@ body {
 	height: 100vh;
 }
 section {
-	width: 80vw;
-	height: 90vh;
+	/* display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start; */
+	max-width: 100%;
+	width: 600px;
+	height: 75vh;
 	background-color: #343131;
+	border-radius: 40px;
+	box-shadow: 2px 2px 8px #000000;
 }
 .result {
 	padding: 50px;
@@ -25,9 +32,13 @@ h1 {
 	font-size: 2.5rem;
 }
 .line {
+	display: flex;
+	justify-content: center;
 	margin: 20px;
 }
 button {
+	/* flex: 1 1 20%;
+	max-width: 90px; */
 	border: none;
 	font-size: 1.5rem;
 	width: 90px;
@@ -36,19 +47,25 @@ button {
 	border-radius: 40px;
 	box-shadow: 2px 2px 15px #00000033;
 	color: aliceblue;
-	background-color: grey;
+	background-color: rgba(128, 128, 128, 0.486);
 	cursor: pointer;
-	transition: tranform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+	transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
 }
 button:active {
 	transform: translateY(4px);
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
-.yellow {
+.yellowButton {
 	color: #f5e892;
-	background-color: #d8a15e83;
+	background-color: #d8a15e5b;
 }
-.yellowWhite {
+.yellowWhiteButton {
 	color: aliceblue;
-	background-color: #dbc744;
+	background-color: #dbc744c2;
+}
+hr {
+	border: none;
+	height: 1.5px;
+	background-color: rgba(128, 128, 128, 0.13);
+	margin: 20px 0;
 }
