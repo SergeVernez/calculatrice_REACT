@@ -4,14 +4,22 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [total, setTotal] = useState("")
+
+  const handleClick = (valeur) => {
+    setTotal(total.toString() + valeur.toString());
+  }
+
+  const handleCalcul = () => {
+    setTotal(eval(total))
+  }
 
   return (
     <>
       <section>
         {/* afficher le resultat */}
         <div className='result'>
-          <h1>Result</h1>
+          <h1>Result {total}</h1>
         </div>
         <div>
           <hr />
@@ -27,8 +35,8 @@ function App() {
           </div>
 
           <div className='line'>
-            <button>7</button>
-            <button>8</button>
+            <button onClick={() => { handleClick(7) }}>7</button>
+            <button onClick={() => { handleClick(8) }}>8</button>
             <button>9</button>
             <button className='yellowButton'>&times;</button>
           </div>
@@ -44,14 +52,14 @@ function App() {
             <button>1</button>
             <button>2</button>
             <button>3</button>
-            <button className='yellowButton'>+</button>
+            <button onClick={() => { handleClick("+") }} className='yellowButton'>+</button>
           </div>
 
           <div className='line'>
             <button>%</button>
             <button>0</button>
             <button>,</button>
-            <button className='yellowWhiteButton'>=</button>
+            <button onClick={() => handleCalcul()} className='yellowWhiteButton'>=</button>
           </div>
         </div>
 
