@@ -81,7 +81,7 @@ function App() {
       } else if (key === "%") {
         handleClick("%");
       } else if (key === ".") {
-        handleClick(".");
+        handleClick(",");
       }
     };
     // Ajoute un écouteur d'événements `keydown` à la fenêtre
