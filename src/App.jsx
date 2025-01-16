@@ -13,6 +13,10 @@ function App() {
     setTotal('');
   }
 
+  const handleDelete = () => {
+    setTotal(total.slice(0, -1));
+  };
+
 
   return (
     <>
@@ -30,7 +34,8 @@ function App() {
 
           <div className='line'>
             <button onClick={() => reset()} className='yellowButton'>AC</button>
-            <button className='yellowButton'>&#9003;</button>
+            <button onClick={() => { handleDelete() }} className='yellowButton'>&#9003;</button>
+            {/* ou comme ceci: onClick={handleDelete} */}
             <button className='yellowButton'>+/-</button>
             <button onClick={() => { handleClick("÷") }} className='yellowButton'>&divide;</button>
           </div>
