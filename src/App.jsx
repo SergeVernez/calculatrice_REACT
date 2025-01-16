@@ -5,6 +5,10 @@ function App() {
   const [total, setTotal] = useState("")
   // const handleClick = (valeur) => { setTotal(total + valeur); };
   const handleClick = (valeur) => {
+    // Si le dernier caractère est un opérateur, bloque l'ajout d'un autre opérateur
+    if (operators.includes(total.slice(-1)) && operators.includes(valeur)) {
+      return;
+    }
     // limiter le nombre de caractères a 15 sur l'affichage
     const operators = ['+', '-', '×', '÷'];
     if (total.length < 15 || operators.includes(valeur)) {
