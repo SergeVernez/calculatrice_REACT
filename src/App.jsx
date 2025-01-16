@@ -16,7 +16,11 @@ function App() {
   const handleDelete = () => {
     setTotal(total.slice(0, -1));
   };
-
+  const handleSignChange = () => {
+    if (total) {
+      setTotal((parseFloat(total) * -1).toString());
+    }
+  };
 
   return (
     <>
@@ -36,7 +40,7 @@ function App() {
             <button onClick={() => reset()} className='yellowButton'>AC</button>
             <button onClick={() => { handleDelete() }} className='yellowButton'>&#9003;</button>
             {/* ou comme ceci: onClick={handleDelete} */}
-            <button className='yellowButton'>+/-</button>
+            <button onClick={() => handleSignChange()} className='yellowButton'>+/-</button>
             <button onClick={() => { handleClick("÷") }} className='yellowButton'>&divide;</button>
           </div>
 
