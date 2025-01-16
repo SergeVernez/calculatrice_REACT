@@ -45,7 +45,7 @@ function App() {
       setTotal((parseFloat(total) * -1).toString());
     }
   };
-
+  // useEffect est un hook: permet de gérer les effets secondaires(side effects) comme les appels API, les abonnements, ou la manipulation du DOM. ils aident à écrire du code propre et structuré, en isolant les différentes parties de la logique du composant
   useEffect(() => {
     // fonction pour l'appuie des touches
     const handleKeyDown = (e) => {
