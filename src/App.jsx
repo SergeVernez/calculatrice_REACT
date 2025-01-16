@@ -2,15 +2,22 @@ import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
-  const [total, setTotal] = useState("")
+  const [total, setTotal] = useState("");
+  //Déclaration des opérateurs pour qu'ils soient accéssibles partout
+  const operators = ['+', '-', '×', '÷'];
+
   // const handleClick = (valeur) => { setTotal(total + valeur); };
   const handleClick = (valeur) => {
-    // Si le dernier caractère est un opérateur, bloque l'ajout d'un autre opérateur
+
+    // Si le total est vide, ne pas ajouter d'opérateur
+    if (total === "" && operators.includes(valeur)) {
+      return;
+    }
+    // si le dernier caractère est un opérateur, bloquer l'ajout d'un autre opérateur
     if (operators.includes(total.slice(-1)) && operators.includes(valeur)) {
       return;
     }
     // limiter le nombre de caractères a 15 sur l'affichage
-    const operators = ['+', '-', '×', '÷'];
     if (total.length < 15 || operators.includes(valeur)) {
       setTotal(total + valeur);
     }
@@ -135,6 +142,9 @@ function App() {
             <button onClick={() => { handleClick(",") }}>,</button>
             <button onClick={() => handleCalcul()} className='yellowWhiteButton'>=</button>
           </div>
+        </div>
+        <div className='info'>
+          <h2>Esc = Reset | BackSpace = Delete | Enter = Result</h2>
         </div>
 
       </section>
