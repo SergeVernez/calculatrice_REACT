@@ -1,9 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
   const [total, setTotal] = useState("")
-
   // const handleClick = (valeur) => { setTotal(total + valeur); };
   const handleClick = (valeur) => {
     // limiter le nombre de caractères a 15 sur l'affichage
@@ -14,7 +13,6 @@ function App() {
   };
 
   const handleCalcul = () => {
-    // Conversion des caractères spéciaux en équivalents JavaScript pour le calcul // On remplace toutes les occurrences de '×' par '*' (multiplication) // et '÷' par '/' (division) pour permettre à JavaScript de les interpréter correctement. Les barres obliques (slashes) délimitent l'expression régulière. Tout ce qui se trouve entre ces barres est l'expression régulière à rechercher. Le modificateur g signifie "global". Il indique que la recherche doit être effectuée sur toute la chaîne, et non pas s'arrêter à la première occurrence. Cela permet de remplacer toutes les occurrences du caractère spécifié.
     let caractereCalculable = total.replace(/×/g, '*').replace(/÷/g, '/');
     if (caractereCalculable) {
       //     try { setTotal(eval(caractereCalculable).toString()); } catch (e) { setTotal('Erreur'); } }
@@ -47,20 +45,47 @@ function App() {
       setTotal((parseFloat(total) * -1).toString());
     }
   };
-  const handleKeyDown = (event) => {
-    const key = event.key;
-    if (!isNaN(key)) {
-      handleClick(key);
-    } else if (key === "+") {
-      handleClick('+');
-    }
-  };
+
+  useEffect(() => {
+    // fonction pour l'appuie des touches
+    const handleKeyDown = (e) => {
+      const key = e.key;
+      if (!isNaN(key)) {
+        // isNaN = is Not-a-Number
+        handleClick(key);
+      } else if (key === "+") {
+        handleClick("+");
+      } else if (key === "-") {
+        handleClick("-");
+      } else if (key === "*") {
+        handleClick("×");
+      } else if (key === "/") {
+        handleClick("÷");
+      } else if (key === "Enter") {
+        handleCalcul();
+      } else if (key === "Backspace") {
+        handleDelete();
+      } else if (key === "Escape") {
+        reset();
+      } else if (key === "%") {
+        handleClick("%");
+      } else if (key === ".") {
+        handleClick(".");
+      }
+    };
+    // Ajoute un écouteur d'événements `keydown` à la fenêtre
+    window.addEventListener("keydown", handleKeyDown);
+    // Fonction de nettoyage pour supprimer l'écouteur d'événements (mémoire) et garder la performance de l'appli
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [total]);
 
   return (
     <>
       <section>
         {/* afficher le resultat */}
-        <div className='result'>
+        <div className='result' >
           {/* <input type="text" value={total} readOnly className='resultInput' /> */}
           <h1>{total || <span className="cursor">&nbsp;</span>}</h1>
           {/* &nbsp; est un caractère spécial d'espace insécable pour pouvoir afficher le cursor*/}
