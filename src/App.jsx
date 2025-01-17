@@ -4,7 +4,7 @@ import './App.css'
 function App() {
   const [total, setTotal] = useState("");
   //Déclaration des opérateurs pour qu'ils soient accéssibles partout
-  const operators = ['+', '-', '×', '÷'];
+  const operators = ['+', '-', '×', '÷', ','];
 
   // const handleClick = (valeur) => { setTotal(total + valeur); };
   const handleClick = (valeur) => {
@@ -17,6 +17,14 @@ function App() {
     if (operators.includes(total.slice(-1)) && operators.includes(valeur)) {
       return;
     }
+    if (valeur === ",") {
+      const parts = total.split(/[\+\-\×\÷]/);
+      const currentNumber = parts[parts.length - 1];
+      if (currentNumber.includes(",")) {
+        return;
+      }
+    }
+
     // limiter le nombre de caractères a 15 sur l'affichage
     if (total.length < 15 || operators.includes(valeur)) {
       setTotal(total + valeur);
@@ -148,9 +156,9 @@ function App() {
         </div>
 
       </section>
-
     </>
-  )
+  );
 }
+
 
 export default App
