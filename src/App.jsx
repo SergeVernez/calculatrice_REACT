@@ -32,12 +32,15 @@ function App() {
   };
 
   const handleCalcul = () => {
-    let caractereCalculable = total.replace(/×/g, '*').replace(/÷/g, '/');
+    // Remplace les virgules par des points pour la calculatrice
+    let caractereCalculable = total.replace(/×/g, '*').replace(/÷/g, '/').replace(/,/g, '.');
     if (caractereCalculable) {
       //     try { setTotal(eval(caractereCalculable).toString()); } catch (e) { setTotal('Erreur'); } }
       // };
       try {
         let resultat = eval(caractereCalculable).toString();
+        // Re-remplace les points par des virgules dans le résultat final
+        resultat = resultat.replace(/\./g, ',');
         // si le resultat dépasse 15 caractères alors affiche Error
         if (resultat.length <= 15) {
           setTotal(resultat);
