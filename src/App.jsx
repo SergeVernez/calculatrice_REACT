@@ -1,77 +1,79 @@
-import { useEffect, useState } from 'react'
-import './App.css'
+import { useEffect, useState } from 'react';
+import './App.css';
 
 function App() {
   const [total, setTotal] = useState("");
-  //Déclaration des opérateurs pour qu'ils soient accéssibles partout
+  //Déclaration des opérateurs pour qu'ils soient accessibles partout
   const operators = ['+', '-', '×', '÷', ','];
 
   // const handleClick = (valeur) => { setTotal(total + valeur); };
   const handleClick = (valeur) => {
-
-    // Si le total est vide, ne pas ajouter d'opérateur
-    if (total === "" && operators.includes(valeur)) {
-      return;
-    }
-    // si le dernier caractère est un opérateur, bloquer l'ajout d'un autre opérateur
-    if (operators.includes(total.slice(-1)) && operators.includes(valeur)) {
-      return;
-    }
-    if (valeur === ",") {
-      const parts = total.split(/[\+\-\×\÷]/);
-      const currentNumber = parts[parts.length - 1];
-      if (currentNumber.includes(",")) {
-        return;
+    console.log(`handleClick - valeur: ${valeur}`);
+    setTotal(prevTotal => {
+      console.log(`handleClick - prevTotal: ${prevTotal}`);
+      // Si le total est vide, ne pas ajouter d'opérateur
+      if (prevTotal === "" && operators.includes(valeur)) return prevTotal;
+      // si le dernier caractère est un opérateur, bloquer l'ajout d'un autre opérateur
+      if (operators.includes(prevTotal.slice(-1)) && operators.includes(valeur)) return prevTotal;
+      if (valeur === ",") {
+        const parts = prevTotal.split(/[\+\-\×\÷]/);
+        const currentNumber = parts[parts.length - 1];
+        if (currentNumber.includes(",")) return prevTotal;
       }
-    }
-
-    // limiter le nombre de caractères a 15 sur l'affichage
-    if (total.length < 15 || operators.includes(valeur)) {
-      setTotal(total + valeur);
-    }
+      // limiter le nombre de caractères a 15 sur l'affichage
+      if (prevTotal.length < 15 || operators.includes(valeur)) return prevTotal + valeur;
+      return prevTotal;
+    });
   };
 
   const handleCalcul = () => {
-    // Remplace les virgules par des points pour la calculatrice
-    let caractereCalculable = total.replace(/×/g, '*').replace(/÷/g, '/').replace(/,/g, '.');
-    if (caractereCalculable) {
-      //     try { setTotal(eval(caractereCalculable).toString()); } catch (e) { setTotal('Erreur'); } }
-      // };
-      try {
-        let resultat = eval(caractereCalculable).toString();
-        // Re-remplace les points par des virgules dans le résultat final
-        resultat = resultat.replace(/\./g, ',');
-        // si le resultat dépasse 15 caractères alors affiche Error
-        if (resultat.length <= 15) {
-          setTotal(resultat);
-        } else {
-          setTotal('Error');
+    setTotal(prevTotal => {
+      console.log(`handleCalcul - prevTotal: ${prevTotal}`);
+      // Remplace les virgules par des points pour la calculatrice
+      let caractereCalculable = prevTotal.replace(/×/g, '*').replace(/÷/g, '/').replace(/,/g, '.');
+      console.log(`handleCalcul - caractereCalculable: ${caractereCalculable}`);
+      if (caractereCalculable) {
+        try {
+          let resultat = eval(caractereCalculable).toString();
+          // Re-remplace les points par des virgules dans le résultat final
+          resultat = resultat.replace(/\./g, ',');
+          // si le resultat dépasse 15 caractères alors affiche Error
+          console.log(`handleCalcul - resultat: ${resultat}`);
+          return resultat.length <= 15 ? resultat : 'Error';
+        } catch (e) {
+          return 'Error';
         }
-
-      } catch (e) {
-        setTotal('Error');
       }
-    }
+      return prevTotal;
+    });
   };
 
-
   const reset = () => {
+    console.log('reset');
     setTotal('');
   }
 
   const handleDelete = () => {
-    setTotal(total.slice(0, -1));
+    console.log('handleDelete');
+    setTotal(prevTotal => prevTotal.slice(0, -1));
   };
+
   const handleSignChange = () => {
-    if (total) {
-      setTotal((parseFloat(total) * -1).toString());
-    }
+    console.log('handleSignChange');
+    setTotal(prevTotal => {
+      if (prevTotal) {
+        return (parseFloat(prevTotal) * -1).toString();
+      }
+      return prevTotal;
+    });
   };
-  // useEffect est un hook: permet de gérer les effets secondaires(side effects) comme les appels API, les abonnements, ou la manipulation du DOM. ils aident à écrire du code propre et structuré, en isolant les différentes parties de la logique du composant
+
+  // useEffect est un hook: permet de gérer les effets secondaires (side effects) comme les appels API, les abonnements, ou la manipulation du DOM. ils aident à écrire du code propre et structuré, en isolant les différentes parties de la logique du composant
   useEffect(() => {
-    // fonction pour l'appuie des touches
+    // fonction pour l'appui des touches
     const handleKeyDown = (e) => {
       const key = e.key;
+      console.log(`handleKeyDown - key: ${key}`);
       if (!isNaN(key)) {
         // isNaN = is Not-a-Number
         handleClick(key);
@@ -101,7 +103,7 @@ function App() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [total]);
+  }, []);
 
   return (
     <>
@@ -119,49 +121,47 @@ function App() {
         <div className='keypad'>
 
           <div className='line'>
-            <button onClick={() => reset()} className='yellowButton'>AC</button>
-            <button onClick={() => { handleDelete() }} className='yellowButton'>&#9003;</button>
+            <button onClick={reset} className='yellowButton'>AC</button>
+            <button onClick={handleDelete} className='yellowButton'>&#9003;</button>
             {/* ou comme ceci: onClick={handleDelete} */}
-            <button onClick={() => handleSignChange()} className='yellowButton'>+/-</button>
-            <button onClick={() => { handleClick("÷") }} className='yellowButton'>&divide;</button>
+            <button onClick={handleSignChange} className='yellowButton'>+/-</button>
+            <button onClick={() => handleClick("÷")} className='yellowButton'>&divide;</button>
           </div>
 
           <div className='line'>
-            <button onClick={() => { handleClick(7) }}>7</button>
-            <button onClick={() => { handleClick(8) }}>8</button>
-            <button onClick={() => { handleClick(9) }}>9</button>
-            <button onClick={() => { handleClick("×") }} className='yellowButton'>&times;</button>
+            <button onClick={() => handleClick(7)}>7</button>
+            <button onClick={() => handleClick(8)}>8</button>
+            <button onClick={() => handleClick(9)}>9</button>
+            <button onClick={() => handleClick("×")} className='yellowButton'>&times;</button>
           </div>
 
           <div className='line'>
-            <button onClick={() => { handleClick(4) }}>4</button>
-            <button onClick={() => { handleClick(5) }}>5</button>
-            <button onClick={() => { handleClick(6) }}>6</button>
-            <button onClick={() => { handleClick("-") }} className='yellowButton'>-</button>
+            <button onClick={() => handleClick(4)}>4</button>
+            <button onClick={() => handleClick(5)}>5</button>
+            <button onClick={() => handleClick(6)}>6</button>
+            <button onClick={() => handleClick("-")} className='yellowButton'>-</button>
           </div>
 
           <div className='line'>
-            <button onClick={() => { handleClick(1) }}>1</button>
-            <button onClick={() => { handleClick(2) }}>2</button>
-            <button onClick={() => { handleClick(3) }}>3</button>
-            <button onClick={() => { handleClick("+") }} className='yellowButton'>+</button>
+            <button onClick={() => handleClick(1)}>1</button>
+            <button onClick={() => handleClick(2)}>2</button>
+            <button onClick={() => handleClick(3)}>3</button>
+            <button onClick={() => handleClick("+")} className='yellowButton'>+</button>
           </div>
 
           <div className='line'>
-            <button onClick={() => { handleClick("%") }}>%</button>
-            <button onClick={() => { handleClick(0) }}>0</button>
-            <button onClick={() => { handleClick(",") }}>,</button>
-            <button onClick={() => handleCalcul()} className='yellowWhiteButton'>=</button>
+            <button onClick={() => handleClick("%")}>%</button>
+            <button onClick={() => handleClick(0)}>0</button>
+            <button onClick={() => handleClick(",")}>,</button>
+            <button onClick={handleCalcul} className='yellowWhiteButton'>=</button>
           </div>
         </div>
         <div className='info'>
           <h2>Esc = Reset | BackSpace = Delete | Enter = Result</h2>
         </div>
-
       </section>
     </>
   );
 }
 
-
-export default App
+export default App;
