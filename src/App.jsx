@@ -163,10 +163,11 @@ function App() {
             <button onClick={handleCalcul} className='yellowWhiteButton'>=</button>
           </div>
         </div>
-        <div className='info'>
-          <h2>Esc = Reset | BackSpace = Delete | Enter = Result</h2>
-        </div>
+
       </section>
+      <div className='info'>
+        <h2>Esc = Reset | BackSpace = Delete | Enter = Result</h2>
+      </div>
     </>
   );
 }

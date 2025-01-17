@@ -93,7 +93,7 @@ hr {
 	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 h2 {
-	margin-top: 70px;
+	margin-top: 20px;
 	color: #343131;
 	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 	font-size: 20px;
@@ -105,17 +105,17 @@ h2 {
 @media (max-width: 601px) {
 	body {
 		height: auto;
-		justify-content: flex-start;
-		padding: 20px;
+		justify-content: center;
+		margin-top: 30px;
 	}
 	section {
 		width: 100%;
 		height: auto;
 		border-radius: 20px;
-		padding-bottom: 100px;
+		padding-bottom: 10px;
 	}
 	h1 {
-		font-size: 2rem;
+		font-size: 2.8rem;
 	}
 
 	button {
@@ -130,8 +130,9 @@ h2 {
 	.result {
 		padding: 20px;
 	}
-	.info h2 {
+	h2 {
 		font-size: 1rem;
 		margin-top: 20px;
+		text-align: center;
 	}
 }
