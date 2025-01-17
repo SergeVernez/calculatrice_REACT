@@ -31,6 +31,13 @@ function App() {
       console.log(`handleCalcul - prevTotal: ${prevTotal}`);
       // Remplace les virgules par des points pour la calculatrice
       let caractereCalculable = prevTotal.replace(/×/g, '*').replace(/÷/g, '/').replace(/,/g, '.');
+
+      // Solution copilote:
+      // Gestion correcte du pourcentage en appliquant à la valeur précédente
+      caractereCalculable = caractereCalculable.replace(/(\d+)%/g, (match, p1) => { return `(${p1}/100)`; });
+      // Gestion des cas comme 100-50% => 100-50*100/100
+      caractereCalculable = caractereCalculable.replace(/(\d+)([\+\-\*\/])(\(\d+\/100\))/g, (match, p1, p2, p3) => { return `${p1}${p2}${p1}*${p3}`; });
+
       console.log(`handleCalcul - caractereCalculable: ${caractereCalculable}`);
       if (caractereCalculable) {
         try {
