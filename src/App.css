@@ -129,20 +129,22 @@ h2 {
 	}
 }
 .landscape-warning {
-  display: none;
-  text-align: center;
-  padding: 20px;
-  font-size: 1.5rem;
-  color: white;
-  background-color: #A04747;
+	display: none;
+	text-align: center;
+	padding: 20px;
+	font-size: 1.5rem;
+	color: aliceblue;
+	border: #d8a25e solid 1.8px;
+	border-radius: 10px;
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-@media (orientation: landscape) {
-  .app-content {
-    display: none;
-  }
+@media (max-width: 933px) and (orientation: landscape) {
+	.app-content {
+		display: none;
+	}
 
-  .landscape-warning {
-    display: block;
-  }
+	.landscape-warning {
+		display: block;
+	}
 }

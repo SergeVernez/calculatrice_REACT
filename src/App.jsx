@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import Orientation from './orientation';
 
 function App() {
   const [total, setTotal] = useState("");
@@ -113,7 +114,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <Orientation>
       <section>
         {/* afficher le resultat */}
         <div className='result' >
@@ -168,7 +169,7 @@ function App() {
       <div className='info'>
         <h2>Esc = Reset | BackSpace = Delete | Enter = Result</h2>
       </div>
-    </>
+    </Orientation>
   );
 }
 
