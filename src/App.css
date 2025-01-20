@@ -128,3 +128,21 @@ h2 {
 		display: none;
 	}
 }
+.landscape-warning {
+  display: none;
+  text-align: center;
+  padding: 20px;
+  font-size: 1.5rem;
+  color: white;
+  background-color: #A04747;
+}
+
+@media (orientation: landscape) {
+  .app-content {
+    display: none;
+  }
+
+  .landscape-warning {
+    display: block;
+  }
+}
