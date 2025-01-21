@@ -9,9 +9,9 @@ function App() {
 
   // const handleClick = (valeur) => { setTotal(total + valeur); };
   const handleClick = (valeur) => {
-    console.log(`handleClick - valeur: ${valeur}`);
+   
     setTotal(prevTotal => {
-      console.log(`handleClick - prevTotal: ${prevTotal}`);
+      
       // Si le total est vide, ne pas ajouter d'opérateur
       if (prevTotal === "" && operators.includes(valeur)) return prevTotal;
       // si le dernier caractère est un opérateur, bloquer l'ajout d'un autre opérateur
@@ -29,7 +29,7 @@ function App() {
 
   const handleCalcul = () => {
     setTotal(prevTotal => {
-      console.log(`handleCalcul - prevTotal: ${prevTotal}`);
+      
       // Remplace les virgules par des points pour la calculatrice
       let caractereCalculable = prevTotal.replace(/×/g, '*').replace(/÷/g, '/').replace(/,/g, '.');
 
@@ -39,14 +39,14 @@ function App() {
       // Gestion des cas comme 100-50% => 100-50*100/100
       caractereCalculable = caractereCalculable.replace(/(\d+)([\+\-\*\/])(\(\d+\/100\))/g, (match, p1, p2, p3) => { return `${p1}${p2}${p1}*${p3}`; });
 
-      console.log(`handleCalcul - caractereCalculable: ${caractereCalculable}`);
+      
       if (caractereCalculable) {
         try {
           let resultat = eval(caractereCalculable).toString();
           // Re-remplace les points par des virgules dans le résultat final
           resultat = resultat.replace(/\./g, ',');
           // si le resultat dépasse 15 caractères alors affiche Error
-          console.log(`handleCalcul - resultat: ${resultat}`);
+          
           return resultat.length <= 15 ? resultat : 'Error';
         } catch (e) {
           return 'Error';
@@ -57,17 +57,17 @@ function App() {
   };
 
   const reset = () => {
-    console.log('reset');
+   
     setTotal('');
   }
 
   const handleDelete = () => {
-    console.log('handleDelete');
+   
     setTotal(prevTotal => prevTotal.slice(0, -1));
   };
 
   const handleSignChange = () => {
-    console.log('handleSignChange');
+   
     setTotal(prevTotal => {
       if (prevTotal) {
         return (parseFloat(prevTotal) * -1).toString();
