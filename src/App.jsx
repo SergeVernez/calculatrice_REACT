@@ -9,9 +9,9 @@ function App() {
 
   // const handleClick = (valeur) => { setTotal(total + valeur); };
   const handleClick = (valeur) => {
-   
+
     setTotal(prevTotal => {
-      
+
       // Si le total est vide, ne pas ajouter d'opérateur
       if (prevTotal === "" && operators.includes(valeur)) return prevTotal;
       // si le dernier caractère est un opérateur, bloquer l'ajout d'un autre opérateur
@@ -29,7 +29,7 @@ function App() {
 
   const handleCalcul = () => {
     setTotal(prevTotal => {
-      
+
       // Remplace les virgules par des points pour la calculatrice
       let caractereCalculable = prevTotal.replace(/×/g, '*').replace(/÷/g, '/').replace(/,/g, '.');
 
@@ -39,15 +39,15 @@ function App() {
       // Gestion des cas comme 100-50% => 100-50*100/100
       caractereCalculable = caractereCalculable.replace(/(\d+)([\+\-\*\/])(\(\d+\/100\))/g, (match, p1, p2, p3) => { return `${p1}${p2}${p1}*${p3}`; });
 
-      
+
       if (caractereCalculable) {
         try {
           let resultat = eval(caractereCalculable).toString();
           // Re-remplace les points par des virgules dans le résultat final
           resultat = resultat.replace(/\./g, ',');
           // si le resultat dépasse 15 caractères alors affiche Error
-          
-          return resultat.length <= 15 ? resultat : 'Error';
+
+          return resultat.length <= 15 ? resultat : 'Error';// affiche Error si le resultat dépasse 15 caractères affichés
         } catch (e) {
           return 'Error';
         }
@@ -57,28 +57,26 @@ function App() {
   };
 
   const reset = () => {
-   
     setTotal('');
   }
 
   const handleDelete = () => {
-   
     setTotal(prevTotal => prevTotal.slice(0, -1));
   };
 
+  // +/-
   const handleSignChange = () => {
-   
     setTotal(prevTotal => {
       if (prevTotal) {
         return (parseFloat(prevTotal) * -1).toString();
-      }
+      }// parseFloat convertit une chaine en nombre flottant. X -1 permet de changer le signe
       return prevTotal;
     });
   };
 
   // useEffect est un hook: permet de gérer les effets secondaires (side effects) comme les appels API, les abonnements, ou la manipulation du DOM. ils aident à écrire du code propre et structuré, en isolant les différentes parties de la logique du composant
   useEffect(() => {
-    // fonction pour l'appui des touches
+    // fonction pour l'appui des touches. (e) pour event par exemple
     const handleKeyDown = (e) => {
       const key = e.key;
       console.log(`handleKeyDown - key: ${key}`);
@@ -114,6 +112,7 @@ function App() {
   }, []);
 
   return (
+    // <Orientation></Orientation> est mon composant encapsulé dans une balise 
     <Orientation>
       <section>
         {/* afficher le resultat */}
