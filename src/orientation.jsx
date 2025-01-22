@@ -1,4 +1,4 @@
-// composant pour rotation d'écran
+// composant pour rotation d'écran et empêcher l'utilisateur de passer enn mode portrait
 import React, { useEffect, useState } from 'react';
 
 const Orientation = ({ children }) => {
@@ -20,7 +20,7 @@ const Orientation = ({ children }) => {
     return (
         <div>
             <div className={orientation === "portrait" ? "app-content" : "app-content hidden"}>
-                {children} 
+                {children}
                 {/* {chidren} = prop react désignant les enfants */}
             </div>
             {/* /!\ "portrait" est une valeur d'état pour indiquer l'orientation de l'écran (chaine de caractère).
