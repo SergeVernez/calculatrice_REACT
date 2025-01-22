@@ -17,7 +17,8 @@ function App() {
       // si le dernier caractère est un opérateur, bloquer l'ajout d'un autre opérateur
       if (operators.includes(prevTotal.slice(-1)) && operators.includes(valeur)) return prevTotal;
       if (valeur === ",") {
-        const parts = prevTotal.split(/[\+\-\×\÷%]/);
+        const parts = prevTotal.split(/[\+\-\×\÷%]/); 
+        // [] un tableau pour inculre mes opérateurs
         const currentNumber = parts[parts.length - 1];
         if (currentNumber.includes(",")) return prevTotal;
       }
