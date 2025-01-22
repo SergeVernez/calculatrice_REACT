@@ -167,7 +167,7 @@ function App() {
 
       </section>
       <div className='info'>
-        <h2><span style={{ border: "1px solid #343131", borderRadius: "10px", padding: "5px" }}>Esc</span> = Reset | <span style={{ border: "1px solid #343131", borderRadius: "10px", padding: "5px" }}>BackSpace</span> = Delete | <span style={{ border: "1px solid #343131", borderRadius: "10px", padding: "5px" }}>Enter</span> = Result</h2>
+        <h2><span style={{ border: "1px solid #343131", borderRadius: "10px", padding: "4px" }}>Esc</span> = Reset | <span style={{ border: "1px solid #343131", borderRadius: "10px", padding: "4px" }}>BackSpace</span> = Delete | <span style={{ border: "1px solid #343131", borderRadius: "10px", padding: "4px" }}>Enter</span> = Result</h2>
       </div>
     </Orientation>
   );
