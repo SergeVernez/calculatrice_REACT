@@ -17,7 +17,7 @@ function App() {
       // si le dernier caractère est un opérateur, bloquer l'ajout d'un autre opérateur
       if (operators.includes(prevTotal.slice(-1)) && operators.includes(valeur)) return prevTotal;
       if (valeur === ",") {
-        const parts = prevTotal.split(/[\+\-\×\÷%]/); 
+        const parts = prevTotal.split(/[\+\-\×\÷%]/);
         // [] un tableau pour inculre mes opérateurs
         const currentNumber = parts[parts.length - 1];
         if (currentNumber.includes(",")) return prevTotal;
@@ -167,7 +167,7 @@ function App() {
 
       </section>
       <div className='info'>
-        <h2>Esc = Reset | BackSpace = Delete | Enter = Result</h2>
+        <h2><span style={{ border: "2px solid #343131", borderRadius: "10px", padding: "5px" }}>Esc</span> = Reset | <span style={{ border: "2px solid #343131", borderRadius: "10px", padding: "5px" }}>BackSpace</span> = Delete | <span style={{ border: "2px solid #343131", borderRadius: "10px", padding: "5px" }}>Enter</span> = Result</h2>
       </div>
     </Orientation>
   );
