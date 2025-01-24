@@ -34,6 +34,19 @@ h1 {
 	justify-content: center;
 	margin: 20px;
 }
+/* .button {
+		border: none;
+	font-size: 1.5rem;
+	width: 90px;
+	height: 60px;
+	margin: 0 20px;
+	border-radius: 40px;
+	box-shadow: 2px 2px 15px #00000033;
+	color: aliceblue;
+	background-color: rgba(128, 128, 128, 0.486);
+	cursor: pointer;
+	transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+} */
 button {
 	border: none;
 	font-size: 1.5rem;
